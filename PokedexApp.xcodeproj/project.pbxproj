@@ -20,6 +20,7 @@
 		8076F8AD25D1BCDA00C8C458 /* PokedexData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8AC25D1BCDA00C8C458 /* PokedexData.swift */; };
 		8076F8B225D1BD1E00C8C458 /* PokedexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8B125D1BD1E00C8C458 /* PokedexModel.swift */; };
 		8076F8B825D1BE9B00C8C458 /* PokemonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8B725D1BE9B00C8C458 /* PokemonManager.swift */; };
+		8076F8C125D1BF0000C8C458 /* PokemonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8C025D1BF0000C8C458 /* PokemonData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		8076F8AC25D1BCDA00C8C458 /* PokedexData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexData.swift; sourceTree = "<group>"; };
 		8076F8B125D1BD1E00C8C458 /* PokedexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexModel.swift; sourceTree = "<group>"; };
 		8076F8B725D1BE9B00C8C458 /* PokemonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonManager.swift; sourceTree = "<group>"; };
+		8076F8C025D1BF0000C8C458 /* PokemonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				8076F8B725D1BE9B00C8C458 /* PokemonManager.swift */,
+				8076F8C025D1BF0000C8C458 /* PokemonData.swift */,
 			);
 			path = PokemonModel;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				8076F86F25D1B91800C8C458 /* PokedexApp.xcdatamodeld in Sources */,
 				8076F86925D1B91800C8C458 /* ViewController.swift in Sources */,
 				8076F8B825D1BE9B00C8C458 /* PokemonManager.swift in Sources */,
+				8076F8C125D1BF0000C8C458 /* PokemonData.swift in Sources */,
 				8076F86525D1B91800C8C458 /* AppDelegate.swift in Sources */,
 				8076F8AD25D1BCDA00C8C458 /* PokedexData.swift in Sources */,
 				8076F8B225D1BD1E00C8C458 /* PokedexModel.swift in Sources */,
