@@ -17,6 +17,7 @@
 		8076F87F25D1B91A00C8C458 /* PokedexAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F87E25D1B91A00C8C458 /* PokedexAppTests.swift */; };
 		8076F88A25D1B91A00C8C458 /* PokedexAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F88925D1B91A00C8C458 /* PokedexAppUITests.swift */; };
 		8076F8A525D1BC6500C8C458 /* PokedexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8A425D1BC6500C8C458 /* PokedexManager.swift */; };
+		8076F8AD25D1BCDA00C8C458 /* PokedexData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8AC25D1BCDA00C8C458 /* PokedexData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8076F88925D1B91A00C8C458 /* PokedexAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexAppUITests.swift; sourceTree = "<group>"; };
 		8076F88B25D1B91A00C8C458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8076F8A425D1BC6500C8C458 /* PokedexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexManager.swift; sourceTree = "<group>"; };
+		8076F8AC25D1BCDA00C8C458 /* PokedexData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8076F8A425D1BC6500C8C458 /* PokedexManager.swift */,
+				8076F8AC25D1BCDA00C8C458 /* PokedexData.swift */,
 			);
 			path = PokedexModel;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8076F86F25D1B91800C8C458 /* PokedexApp.xcdatamodeld in Sources */,
 				8076F86925D1B91800C8C458 /* ViewController.swift in Sources */,
 				8076F86525D1B91800C8C458 /* AppDelegate.swift in Sources */,
+				8076F8AD25D1BCDA00C8C458 /* PokedexData.swift in Sources */,
 				8076F86725D1B91800C8C458 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
