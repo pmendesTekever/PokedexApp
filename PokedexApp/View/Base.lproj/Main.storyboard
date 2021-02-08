@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pokedex View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PokedexViewController" customModule="PokedexApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jnI-Rw-v6Z">
+                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="qST-7J-P6p">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="61" id="eQ9-d1-dVq">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="61"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eQ9-d1-dVq" id="5Iz-uQ-PJ1">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="61"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UQh-ry-cqW">
+                                                    <rect key="frame" x="60" y="5" width="71" height="51"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P85-p2-d3D">
+                                                            <rect key="frame" x="0.0" y="0.0" width="71" height="24.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1a-zP-98g">
+                                                            <rect key="frame" x="0.0" y="26.5" width="71" height="24.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="rIM-y6-4Vj"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="do9-Ua-WMt">
+                                                    <rect key="frame" x="228" y="5" width="150" height="51"/>
+                                                    <subviews>
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nm-Ud-T2c">
+                                                            <rect key="frame" x="0.0" y="0.0" width="71" height="51"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="5vB-Uc-mSm"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Type"/>
+                                                            <connections>
+                                                                <action selector="btnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uus-gD-Q0M"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t24-tB-epa">
+                                                            <rect key="frame" x="79" y="0.0" width="71" height="51"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="46q-KE-3IP"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Type"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="NoX-is-6Pl"/>
+                                                        <constraint firstAttribute="width" constant="150" id="rLO-Sw-faq"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokemon-go-pikachu-summer" translatesAutoresizingMaskIntoConstraints="NO" id="1yl-Hk-0on">
+                                                    <rect key="frame" x="5" y="5" width="50" height="51"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="GOz-Ia-ypD"/>
+                                                        <constraint firstAttribute="width" constant="50" id="hww-SK-6XL"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UQh-ry-cqW" firstAttribute="top" secondItem="5Iz-uQ-PJ1" secondAttribute="top" constant="5" id="Cjb-N1-F9V"/>
+                                                <constraint firstAttribute="bottom" secondItem="UQh-ry-cqW" secondAttribute="bottom" constant="5" id="HHu-5U-uwH"/>
+                                                <constraint firstAttribute="bottom" secondItem="do9-Ua-WMt" secondAttribute="bottom" constant="5" id="Mkj-KD-vM4"/>
+                                                <constraint firstItem="UQh-ry-cqW" firstAttribute="leading" secondItem="1yl-Hk-0on" secondAttribute="trailing" constant="5" id="Mmq-0r-D1q"/>
+                                                <constraint firstItem="do9-Ua-WMt" firstAttribute="top" secondItem="5Iz-uQ-PJ1" secondAttribute="top" constant="5" id="XcD-WW-icb"/>
+                                                <constraint firstItem="1yl-Hk-0on" firstAttribute="leading" secondItem="5Iz-uQ-PJ1" secondAttribute="leading" constant="5" id="mdH-PS-g1x"/>
+                                                <constraint firstItem="1yl-Hk-0on" firstAttribute="top" secondItem="5Iz-uQ-PJ1" secondAttribute="top" constant="5" id="o0i-9j-9SM"/>
+                                                <constraint firstAttribute="trailing" secondItem="do9-Ua-WMt" secondAttribute="trailing" constant="5" id="qrG-k1-ezK"/>
+                                                <constraint firstAttribute="bottom" secondItem="1yl-Hk-0on" secondAttribute="bottom" constant="5" id="yTT-qZ-ag7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokemon-go-pikachu-summer" translatesAutoresizingMaskIntoConstraints="NO" id="z47-qn-PaJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jnI-Rw-v6Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="6aZ-WK-ooL"/>
+                            <constraint firstItem="z47-qn-PaJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="C09-S5-FOf"/>
+                            <constraint firstItem="z47-qn-PaJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HfM-h8-whs"/>
+                            <constraint firstItem="z47-qn-PaJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TVX-2q-eAW"/>
+                            <constraint firstItem="jnI-Rw-v6Z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oxE-0Q-0Oj"/>
+                            <constraint firstItem="jnI-Rw-v6Z" firstAttribute="top" secondItem="z47-qn-PaJ" secondAttribute="bottom" id="pTB-5n-n7e"/>
+                            <constraint firstAttribute="bottom" secondItem="jnI-Rw-v6Z" secondAttribute="bottom" id="sCH-HF-gR8"/>
+                            <constraint firstItem="jnI-Rw-v6Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="z6t-5w-Cqb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pokemon-go-pikachu-summer" width="1024" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
