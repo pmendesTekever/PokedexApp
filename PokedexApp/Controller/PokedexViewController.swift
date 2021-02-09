@@ -2,20 +2,61 @@ import UIKit
 
 class PokedexViewController: UIViewController {
 
-    var pokedexManager = PokedexManager()
+    @IBOutlet weak var pokemonTableView: UITableView!
 
-    @IBAction func btnPressed(_ sender: Any) {
-        let pokemonManager = PokemonManager()
-        pokemonManager.fetchPokemon(pokemonName: "dragonite")
-    }
-    
+    var pokedexManager = PokedexManager()
+    var pokemonManager = PokemonManager()
+    var pokemonListArray: Array<PokemonModel> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         pokedexManager.delegate = self
         pokedexManager.fetchPokedex()
+        
+        pokemonManager.delegate = self
+        
+        pokemonTableView.delegate = self
+        pokemonTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        DispatchQueue.main.async {
+            self.pokemonTableView.reloadData()
+        }
     }
 }
 
+//MARK: - UITableViewDataSource
+extension PokedexViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Change this variable
+        return pokedexManager.pokedexOffset
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonCell
+
+        if (indexPath.row <= pokemonListArray.count - 1) {
+            cell.pokemonCellName.text = self.pokemonListArray[indexPath.row].name
+            cell.pokemonCellNumber.text = "No. \(self.pokemonListArray[indexPath.row].id)"
+            cell.pokemonCellTypeOne.setTitle(self.pokemonListArray[indexPath.row].types[0], for: .normal)
+            if self.pokemonListArray[indexPath.row].types.count == 2 {
+                cell.pokemonCellTypeTwo.setTitle(self.pokemonListArray[indexPath.row].types[1], for: .normal)
+            } else {
+                cell.pokemonCellTypeTwo.alpha = 0
+            }
+        }
+
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension PokedexViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
 //MARK: - UITextFieldDelegate
 //extension PokedexViewController: UITextFieldDelegate {
 //
@@ -41,16 +82,22 @@ class PokedexViewController: UIViewController {
 //    }
 //}
 
-//MARK: - PokemonManagerDelegate
+//MARK: - PokedexManagerDelegate
 extension PokedexViewController: PokedexManagerDelegate {
     func didUpdatePokedex(_ pokedexManager: PokedexManager, pokedex: PokedexModel) {
-        DispatchQueue.main.async {
-            //self.pokedexNumber.text = String(format: "\(pokedex)")
+        for listedPokemon in pokedex.results {
+            pokemonManager.fetchPokemon(pokemonName: listedPokemon.name)
         }
-    }
+}
     
     func didFailWithError(error: Error) {
         print(error)
     }
-    
+}
+
+//MARK: - PokemonManagerDelegate
+extension PokedexViewController: PokemonManagerDelegate {
+    func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
+        pokemonListArray.append(pokemon)
+    }
 }

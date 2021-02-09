@@ -26,7 +26,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="61" id="eQ9-d1-dVq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="pokemonCell" rowHeight="61" id="eQ9-d1-dVq" customClass="PokemonCell" customModule="PokedexApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eQ9-d1-dVq" id="5Iz-uQ-PJ1">
@@ -62,9 +62,6 @@
                                                                 <constraint firstAttribute="height" constant="50" id="5vB-Uc-mSm"/>
                                                             </constraints>
                                                             <state key="normal" title="Type"/>
-                                                            <connections>
-                                                                <action selector="btnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uus-gD-Q0M"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t24-tB-epa">
                                                             <rect key="frame" x="79" y="0.0" width="71" height="51"/>
@@ -99,6 +96,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="1yl-Hk-0on" secondAttribute="bottom" constant="5" id="yTT-qZ-ag7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pokemonCellImage" destination="1yl-Hk-0on" id="Sya-hH-uE2"/>
+                                            <outlet property="pokemonCellName" destination="P85-p2-d3D" id="LHs-OV-Df2"/>
+                                            <outlet property="pokemonCellNumber" destination="n1a-zP-98g" id="Gr6-bh-Qpv"/>
+                                            <outlet property="pokemonCellTypeOne" destination="t24-tB-epa" id="qcd-MK-T55"/>
+                                            <outlet property="pokemonCellTypeTwo" destination="6nm-Ud-T2c" id="PHp-b1-gW9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -119,6 +123,9 @@
                             <constraint firstItem="jnI-Rw-v6Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="z6t-5w-Cqb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pokemonTableView" destination="jnI-Rw-v6Z" id="rf0-ny-e2j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
