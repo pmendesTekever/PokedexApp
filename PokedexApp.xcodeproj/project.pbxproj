@@ -24,6 +24,7 @@
 		8076F8C925D1BFF400C8C458 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8C825D1BFF400C8C458 /* PokemonModel.swift */; };
 		8076F8CF25D1C49600C8C458 /* PokedexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8CE25D1C49600C8C458 /* PokedexViewController.swift */; };
 		8076F8DE25D3130100C8C458 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076F8DD25D3130100C8C458 /* PokemonCell.swift */; };
+		809DCB9025D46136005C058B /* PokemonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCB8F25D46136005C058B /* PokemonDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		8076F8C825D1BFF400C8C458 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		8076F8CE25D1C49600C8C458 /* PokedexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewController.swift; sourceTree = "<group>"; };
 		8076F8DD25D3130100C8C458 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
+		809DCB8F25D46136005C058B /* PokemonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				8076F8CE25D1C49600C8C458 /* PokedexViewController.swift */,
+				809DCB8F25D46136005C058B /* PokemonDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				8076F8A525D1BC6500C8C458 /* PokedexManager.swift in Sources */,
 				8076F86F25D1B91800C8C458 /* PokedexApp.xcdatamodeld in Sources */,
 				8076F86925D1B91800C8C458 /* ViewController.swift in Sources */,
+				809DCB9025D46136005C058B /* PokemonDetailsViewController.swift in Sources */,
 				8076F8C925D1BFF400C8C458 /* PokemonModel.swift in Sources */,
 				8076F8B825D1BE9B00C8C458 /* PokemonManager.swift in Sources */,
 				8076F8DE25D3130100C8C458 /* PokemonCell.swift in Sources */,

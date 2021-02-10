@@ -7,6 +7,7 @@ class PokedexViewController: UIViewController {
     var pokedexManager = PokedexManager()
     var pokemonManager = PokemonManager()
     var pokemonListArray: Array<PokemonModel> = []
+    var pokemon: PokemonModel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,19 @@ class PokedexViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pokemonDetailsSegue" {
+            pokemon = pokemonListArray[pokemonTableView.indexPathForSelectedRow?.row ?? 0]
+            if let destinationVC = segue.destination as? PokemonDetailsViewController {
+                destinationVC.pokemon = pokemon
+            }
+//            let destinationVC = segue.destination as! PokemonDetailsViewController
+//            destinationVC.pokemon = pokemon
         }
     }
 }
@@ -57,6 +68,7 @@ extension PokedexViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
+    
 //MARK: - UITextFieldDelegate
 //extension PokedexViewController: UITextFieldDelegate {
 //
@@ -88,7 +100,7 @@ extension PokedexViewController: PokedexManagerDelegate {
         for listedPokemon in pokedex.results {
             pokemonManager.fetchPokemon(pokemonName: listedPokemon.name)
         }
-}
+    }
     
     func didFailWithError(error: Error) {
         print(error)
@@ -98,6 +110,7 @@ extension PokedexViewController: PokedexManagerDelegate {
 //MARK: - PokemonManagerDelegate
 extension PokedexViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
+        //check for crashes here
         pokemonListArray.append(pokemon)
     }
 }
