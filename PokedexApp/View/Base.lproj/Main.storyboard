@@ -144,7 +144,7 @@
                                 <rect key="frame" x="10" y="265" width="394" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Ut8-cQ-CRl">
-                                        <rect key="frame" x="19.5" y="41.5" width="355.5" height="460"/>
+                                        <rect key="frame" x="19.5" y="64" width="355.5" height="415.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-EV-0L5" userLabel="Pokemon Details Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="355.5" height="104.5"/>
@@ -228,16 +228,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-YK-1AL" userLabel="Attacks Stack View">
-                                                <rect key="frame" x="25" y="157.5" width="305.5" height="146"/>
+                                                <rect key="frame" x="25" y="157.5" width="305.5" height="101.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attacks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQm-H3-5Mp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="305.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-6J-03B">
-                                                        <rect key="frame" x="0.0" y="44.5" width="305.5" height="101.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="305.5" height="101.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstAttack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxB-hF-gZr">
                                                                 <rect key="frame" x="0.0" y="0.0" width="305.5" height="20.5"/>
@@ -266,12 +260,11 @@
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="KQm-H3-5Mp" firstAttribute="centerX" secondItem="wtS-YK-1AL" secondAttribute="centerX" id="3tK-kF-ssx"/>
                                                     <constraint firstItem="kgC-6J-03B" firstAttribute="centerX" secondItem="wtS-YK-1AL" secondAttribute="centerX" id="paU-ms-hYO"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="rvN-Pa-9EF" userLabel="Base Stats Stack View">
-                                                <rect key="frame" x="41.5" y="356.5" width="272.5" height="103.5"/>
+                                                <rect key="frame" x="41.5" y="312" width="272.5" height="103.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-eI-fsN">
                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="103.5"/>
@@ -396,13 +389,13 @@
                                         <rect key="frame" x="-5" y="-71" width="250" height="270"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oa-LZ-6zt">
-                                                <rect key="frame" x="115" y="0.0" width="20" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                <rect key="frame" x="110.5" y="0.0" width="29.5" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="pokemon-go-pikachu-summer" translatesAutoresizingMaskIntoConstraints="NO" id="9Ha-6k-sHQ" userLabel="Pokemon Image">
-                                                <rect key="frame" x="0.0" y="44.5" width="250" height="225.5"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="250" height="214.5"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -432,7 +425,22 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="CPLabel" destination="1Oa-LZ-6zt" id="abr-dI-ejQ"/>
+                        <outlet property="attackLabel" destination="fHx-xx-Ovy" id="7DR-6v-sDE"/>
+                        <outlet property="defenseLabel" destination="BZp-ai-8F1" id="gPS-Ey-ZSL"/>
+                        <outlet property="hpLabel" destination="LEU-Ug-Jsi" id="Cgg-85-BxC"/>
+                        <outlet property="pokemonFirstAttack" destination="IxB-hF-gZr" id="7rS-H2-PPF"/>
+                        <outlet property="pokemonFirstType" destination="IQQ-Xt-qtF" id="nJs-2J-khZ"/>
+                        <outlet property="pokemonHeight" destination="0Qc-ht-Yee" id="QhC-Gv-3ye"/>
+                        <outlet property="pokemonImage" destination="9Ha-6k-sHQ" id="zUN-O7-2HR"/>
                         <outlet property="pokemonName" destination="h1Q-fQ-mpc" id="VRd-Ht-xbL"/>
+                        <outlet property="pokemonSecondAttack" destination="s27-jd-hWo" id="Dgu-Fk-8DP"/>
+                        <outlet property="pokemonSecondType" destination="F2I-Nl-Mit" id="UTE-fZ-zbb"/>
+                        <outlet property="pokemonThirdAttack" destination="rNI-1d-Psb" id="NyJ-Xq-buL"/>
+                        <outlet property="pokemonWeight" destination="nOd-dL-vBO" id="GRs-y4-Wrw"/>
+                        <outlet property="spAtkLabel" destination="hi7-Nr-jHO" id="77T-HB-dga"/>
+                        <outlet property="spDefLabel" destination="UwZ-uP-YwH" id="tHi-YP-EpJ"/>
+                        <outlet property="speedLbl" destination="KTs-zO-XaG" id="2yx-Ov-MJC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1O-wp-7dM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
