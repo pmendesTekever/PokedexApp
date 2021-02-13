@@ -6,8 +6,7 @@ protocol PokedexManagerDelegate {
 }
 
 struct PokedexManager {
-    // Put this string somewhere else
-    let pokedexURL = "https://pokeapi.co/api/v2/pokemon/?limit=20&offset="
+    let pokedexURL = Constants.pokedexURL
     var pokedexOffset = 0
     
     var delegate: PokedexManagerDelegate?
@@ -15,7 +14,7 @@ struct PokedexManager {
     mutating func fetchPokedex() {
         let urlString = "\(pokedexURL)\(pokedexOffset)"
         performRequest(urlString: urlString)
-        self.pokedexOffset += 20
+        self.pokedexOffset += Constants.pokedexOffset
     }
     
     func performRequest(urlString: String) {

@@ -6,9 +6,7 @@ protocol PokemonManagerDelegate {
 }
 
 struct PokemonManager {
-    // Put this string somewhere else
-    let pokemonURL = "https://pokeapi.co/api/v2/pokemon/"
-    
+    let pokemonURL = Constants.pokemonURL
     var delegate: PokemonManagerDelegate?
     
     func fetchPokemon(pokemonName: String) {
@@ -60,7 +58,7 @@ struct PokemonManager {
                 movesList.append(moves.move.name)
             }
             var randomMoves = [String]()
-            while randomMoves.count < 3 {
+            while randomMoves.count < Constants.randomMovesCount {
                 let randomMovePosition = Int.random(in: 0..<movesList.count)
                 if !randomMoves.contains(movesList[randomMovePosition]) {
                     randomMoves.append(movesList[randomMovePosition])
@@ -74,19 +72,20 @@ struct PokemonManager {
             var baseSpAttack = 0
             var baseSpDefense = 0
             var baseSpeed = 0
+            
             for stat in stats {
                 switch stat.stat.name {
-                case "hp":
+                case statsStrings.hp.rawValue:
                     baseHP = stat.baseStat
-                case "attack":
+                case statsStrings.attack.rawValue:
                     baseAttack = stat.baseStat
-                case "defense":
+                case statsStrings.defense.rawValue:
                     baseDefense = stat.baseStat
-                case "special-attack":
+                case statsStrings.specialAttack.rawValue:
                     baseSpAttack = stat.baseStat
-                case "special-defense":
+                case statsStrings.specialDefense.rawValue:
                     baseSpDefense = stat.baseStat
-                case "speed":
+                case statsStrings.speed.rawValue:
                     baseSpeed = stat.baseStat
                 default:
                     print("Unknown Stat")
