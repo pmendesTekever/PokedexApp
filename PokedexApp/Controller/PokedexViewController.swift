@@ -8,7 +8,8 @@ class PokedexViewController: UIViewController {
     var pokemonManager = PokemonManager()
     var pokemonListArray: Array<PokemonModel> = []
     var pokemon: PokemonModel? = nil
-
+    var artworkUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pokedexManager.delegate = self
@@ -18,6 +19,7 @@ class PokedexViewController: UIViewController {
         
         pokemonTableView.delegate = self
         pokemonTableView.dataSource = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +54,8 @@ extension PokedexViewController: UITableViewDataSource {
             cell.pokemonCellName.text = self.pokemonListArray[indexPath.row].name
             cell.pokemonCellNumber.text = "No. \(self.pokemonListArray[indexPath.row].id)"
             cell.pokemonCellTypeOne.setTitle(self.pokemonListArray[indexPath.row].types[0], for: .normal)
+            let imageData = try? Data(contentsOf: URL(string: self.pokemonListArray[indexPath.row].artwork)!)
+            cell.pokemonCellImage.image = UIImage(data: imageData!)
             if self.pokemonListArray[indexPath.row].types.count == 2 {
                 cell.pokemonCellTypeTwo.setTitle(self.pokemonListArray[indexPath.row].types[1], for: .normal)
             } else {
@@ -68,7 +72,28 @@ extension PokedexViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
+
+//MARK: - PokedexManagerDelegate
+extension PokedexViewController: PokedexManagerDelegate {
+    func didUpdatePokedex(_ pokedexManager: PokedexManager, pokedex: PokedexModel) {
+        for listedPokemon in pokedex.results {
+            pokemonManager.fetchPokemon(pokemonName: listedPokemon.name)
+        }
+    }
     
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+
+//MARK: - PokemonManagerDelegate
+extension PokedexViewController: PokemonManagerDelegate {
+    func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
+        //check for crashes here
+        pokemonListArray.append(pokemon)
+    }
+}
+
 //MARK: - UITextFieldDelegate
 //extension PokedexViewController: UITextFieldDelegate {
 //
@@ -93,24 +118,3 @@ extension PokedexViewController: UITableViewDelegate {
 //        }
 //    }
 //}
-
-//MARK: - PokedexManagerDelegate
-extension PokedexViewController: PokedexManagerDelegate {
-    func didUpdatePokedex(_ pokedexManager: PokedexManager, pokedex: PokedexModel) {
-        for listedPokemon in pokedex.results {
-            pokemonManager.fetchPokemon(pokemonName: listedPokemon.name)
-        }
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-}
-
-//MARK: - PokemonManagerDelegate
-extension PokedexViewController: PokemonManagerDelegate {
-    func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
-        //check for crashes here
-        pokemonListArray.append(pokemon)
-    }
-}

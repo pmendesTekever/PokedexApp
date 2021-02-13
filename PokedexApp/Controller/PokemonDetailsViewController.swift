@@ -22,13 +22,15 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var speedLbl: UILabel!
     
     var totalCP = 0
-    
+
     override func viewDidLoad() {
         // NO !!!
         if pokemon != nil {
             totalCP = pokemon!.baseHP + pokemon!.baseAttack + pokemon!.baseDefense + pokemon!.baseSpAttack + pokemon!.baseSpDefense + pokemon!.baseSpeed
         }
         CPLabel.text = "\(totalCP)"
+        let imageData = try? Data(contentsOf: URL(string: pokemon?.artwork ?? "")!)
+        pokemonImage.image = UIImage(data: imageData!)
         pokemonName.text = pokemon?.name ?? "Pokémon"
         pokemonWeight.text = "\(pokemon?.weight ?? 0)Kg"
         pokemonHeight.text = "\(pokemon?.height ?? 0)m"
