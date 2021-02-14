@@ -64,6 +64,7 @@ struct PokemonManager {
             for moves in availableMoves {
                 movesList.append(moves.move.name)
             }
+            
             var randomMoves = [String]()
             while randomMoves.count < Constants.randomMovesCount {
                 let randomMovePosition = Int.random(in: 0..<movesList.count)
@@ -79,6 +80,7 @@ struct PokemonManager {
             var baseSpAttack = 0
             var baseSpDefense = 0
             var baseSpeed = 0
+            var totalCP = 0
             
             for stat in stats {
                 switch stat.stat.name {
@@ -98,14 +100,16 @@ struct PokemonManager {
                     print("Unknown Stat")
                 }
             }
-
+            
+            totalCP = baseHP + baseAttack + baseDefense + baseSpAttack + baseSpDefense + baseSpeed
+            
             let pokemonTypes = decodedData.types
             var types = [String]()
             for type in pokemonTypes {
                 types.append(type.type.name)
             }
         
-            let pokemon = PokemonModel(id: id, name: name, height: height, weight: weight, artwork: frontDefault, moves: randomMoves, baseHP: baseHP, baseAttack: baseAttack, baseDefense: baseDefense, baseSpAttack: baseSpAttack, baseSpDefense: baseSpDefense, baseSpeed: baseSpeed, types: types)
+            let pokemon = PokemonModel(id: id, name: name, height: height, weight: weight, artwork: frontDefault, moves: randomMoves, baseHP: baseHP, baseAttack: baseAttack, baseDefense: baseDefense, baseSpAttack: baseSpAttack, baseSpDefense: baseSpDefense, baseSpeed: baseSpeed, totalCP: totalCP, types: types)
 
             return pokemon
         } catch {

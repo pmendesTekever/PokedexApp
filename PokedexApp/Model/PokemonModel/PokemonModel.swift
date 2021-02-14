@@ -13,5 +13,6 @@ struct PokemonModel {
     let baseSpAttack: Int
     let baseSpDefense: Int
     let baseSpeed: Int
+    let totalCP: Int
     let types: Array<String>
 }
