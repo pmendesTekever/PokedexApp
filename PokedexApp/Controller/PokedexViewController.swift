@@ -74,12 +74,7 @@ extension PokedexViewController: UITableViewDelegate {
 //MARK: - PokedexManagerDelegate
 extension PokedexViewController: PokedexManagerDelegate {
     func didUpdatePokedex(_ pokedexManager: PokedexManager, pokedex: PokedexModel) {
-        //pokedexListArray.append(pokedex)
         pokemonManager.fetchPokemon(pokemonList: pokedex.results)
-//        DispatchQueue.main.async {
-//            self.view.addSubview(self.activityIndicatorView)
-//            self.activityIndicatorView.startAnimating()
-//        }
     }
     
     func didFailWithError(error: Error) {
@@ -90,44 +85,10 @@ extension PokedexViewController: PokedexManagerDelegate {
 //MARK: - PokemonManagerDelegate
 extension PokedexViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
-        //check for crashes here
         pokemonListArray.append(pokemon)
         
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
         }
-        print("POKEMON #\(pokemon.id)")
-//        if (pokemonListArray.count == pokedexManager.pokedexOffset) {
-//            DispatchQueue.main.async {
-//                self.pokemonTableView.reloadData()
-//                self.activityIndicatorView.stopAnimating()
-//            }
-//        }
     }
 }
-
-//MARK: - UITextFieldDelegate
-//extension PokedexViewController: UITextFieldDelegate {
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        searchTextfield.endEditing(true)
-//        return true
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        var searchedPokemon: PokemonModel
-//        if let pokemonName = searchTextfield.text {
-//            searchedPokemon = pokemonManager.fetchPokedex(pokemonName: pokemonName)
-//        }
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if textField.text != "" {
-//            textField.placeholder = "Search"
-//            return true
-//        } else {
-//            textField.placeholder = "Choose a Pokémon"
-//            return false
-//        }
-//    }
-//}

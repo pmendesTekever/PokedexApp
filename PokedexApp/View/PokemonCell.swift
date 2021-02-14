@@ -1,10 +1,3 @@
-//
-//  PokemonCell.swift
-//  PokedexApp
-//
-//  Created by Paulo Mendes on 09/02/2021.
-//
-
 import UIKit
 
 class PokemonCell: UITableViewCell {

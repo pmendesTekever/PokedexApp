@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  PokedexApp
-//
-//  Created by Paulo Mendes on 08/02/2021.
-//
-
 import UIKit
 import CoreData
 

@@ -27,41 +27,65 @@ class PokemonDetailsViewController: UIViewController {
     @IBAction func bancBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    var totalCP = 0
-
+    
+    private let detailCornerRadius: CGFloat =  10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // NO !!!
-        // CALCULATE CP ON POKEMONMANAGER
-       //detailsView.layer.cornerRadius = 10
-        detailsFirstSection.layer.cornerRadius = 10
-        detailsSecondSection.layer.cornerRadius = 10
-        detailsThirdSection.layer.cornerRadius = 10
         
         self.modalPresentationStyle = .fullScreen
-
-        if pokemon != nil {
-            totalCP = pokemon!.baseHP + pokemon!.baseAttack + pokemon!.baseDefense + pokemon!.baseSpAttack + pokemon!.baseSpDefense + pokemon!.baseSpeed
-        }
-        CPLabel.text = "CP \(totalCP)"
+        self.setDetailCornerRadius()
+        
+        self.setPokemonDetails()
+        self.setPokemonTypes()
+        self.setPokemonAttacks()
+        self.setPokemonBaseStats()
+    }
+    
+    func setDetailCornerRadius() {
+        detailsFirstSection.layer.cornerRadius = detailCornerRadius
+        detailsSecondSection.layer.cornerRadius = detailCornerRadius
+        detailsThirdSection.layer.cornerRadius = detailCornerRadius
+    }
+    
+    func setPokemonDetails() {
         let imageData = try? Data(contentsOf: URL(string: pokemon?.artwork ?? "")!)
         pokemonImage.image = UIImage(data: imageData!)
         pokemonName.text = pokemon?.name.capitalized ?? "Pokémon"
         pokemonWeight.text = "\(pokemon?.weight ?? 0)Kg"
-        pokemonHeight.text = "\(pokemon?.height ?? 0)m"
-
+        pokemonHeight.text = "\(pokemon?.height ?? 0)"
+    }
+    
+    func setPokemonTypes() {
         if let pokemonType1 = pokemon?.types[0] {
             pokemonFirstType.setTitle(pokemonType1.capitalized, for: .normal)
         }
         if (pokemon?.types.count == 2), let pokemonType2 = pokemon?.types[1] {
-                       pokemonSecondType.setTitle(pokemonType2.capitalized, for: .normal)
-         } else {
+            pokemonSecondType.setTitle(pokemonType2.capitalized, for: .normal)
+        } else {
             pokemonSecondType.isHidden = true
         }
-        // Not all Pokemons can have 3 attacks - needs to be optional
-        pokemonFirstAttack.text = pokemon?.moves[0].capitalized
-        pokemonSecondAttack.text = pokemon?.moves[1].capitalized
-        pokemonThirdAttack.text = pokemon?.moves[2].capitalized
+    }
+    
+    func setPokemonAttacks() {
+        if let firstAttack = pokemon?.moves[0], firstAttack != "" {
+          pokemonFirstAttack.text = firstAttack.capitalized
+        } else {
+          pokemonFirstAttack.text = "Struggle"
+        }
+        if let secondAttack = pokemon?.moves[1], secondAttack != "" {
+          pokemonSecondAttack.text = secondAttack.capitalized
+        } else {
+            pokemonSecondAttack.isHidden = true
+        }
+        if let thirdAttack = pokemon?.moves[2], thirdAttack != "" {
+          pokemonFirstAttack.text = thirdAttack.capitalized
+        } else {
+            pokemonThirdAttack.isHidden = true
+        }
+    }
+    
+    func setPokemonBaseStats() {
         if let baseHP = pokemon?.baseHP {
             hpLabel.text = "\(baseHP)"
         }
@@ -79,6 +103,9 @@ class PokemonDetailsViewController: UIViewController {
         }
         if let baseSpeed = pokemon?.baseSpeed {
             speedLbl.text = "\(baseSpeed)"
+        }
+        if let totalCP = pokemon?.totalCP {
+            CPLabel.text = "CP \(totalCP)"
         }
     }
 }

@@ -17,7 +17,7 @@ struct PokemonMovesData: Codable {
 
 struct PokemonMoveDetails: Codable {
     let name: String
-    let url: String // Needs decoding
+    let url: String
 }
 
 struct Stats: Codable {
