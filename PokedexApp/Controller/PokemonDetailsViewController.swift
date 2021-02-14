@@ -6,8 +6,9 @@ class PokemonDetailsViewController: UIViewController {
     
     @IBOutlet weak var CPLabel: UILabel!
     @IBOutlet weak var pokemonImage: UIImageView!
-    @IBOutlet weak var pokemonDetailsScrollView: UIScrollView!
-    @IBOutlet weak var detailsView: UIView!
+    @IBOutlet weak var detailsFirstSection: UIView!
+    @IBOutlet weak var detailsSecondSection: UIView!
+    @IBOutlet weak var detailsThirdSection: UIView!
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var pokemonWeight: UILabel!
     @IBOutlet weak var pokemonHeight: UILabel!
@@ -32,7 +33,11 @@ class PokemonDetailsViewController: UIViewController {
         super.viewDidLoad()
         // NO !!!
         // CALCULATE CP ON POKEMONMANAGER
-        detailsView.layer.cornerRadius = 10
+       //detailsView.layer.cornerRadius = 10
+        detailsFirstSection.layer.cornerRadius = 10
+        detailsSecondSection.layer.cornerRadius = 10
+        detailsThirdSection.layer.cornerRadius = 10
+        
         self.modalPresentationStyle = .fullScreen
 
         if pokemon != nil {
@@ -48,11 +53,9 @@ class PokemonDetailsViewController: UIViewController {
         if let pokemonType1 = pokemon?.types[0] {
             pokemonFirstType.setTitle(pokemonType1.capitalized, for: .normal)
         }
-        if (pokemon?.types.count == 2) {
-            if let pokemonType2 = pokemon?.types[1] {
-                pokemonSecondType.setTitle(pokemonType2.capitalized, for: .normal)
-            }
-        } else {
+        if (pokemon?.types.count == 2), let pokemonType2 = pokemon?.types[1] {
+                       pokemonSecondType.setTitle(pokemonType2.capitalized, for: .normal)
+         } else {
             pokemonSecondType.isHidden = true
         }
         // Not all Pokemons can have 3 attacks - needs to be optional
