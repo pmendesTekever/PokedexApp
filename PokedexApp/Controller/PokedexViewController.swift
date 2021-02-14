@@ -19,10 +19,9 @@ class PokedexViewController: UIViewController {
         
         pokemonTableView.delegate = self
         pokemonTableView.dataSource = self
-
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
         }
@@ -32,6 +31,7 @@ class PokedexViewController: UIViewController {
         if segue.identifier == "pokemonDetailsSegue" {
             pokemon = pokemonListArray[pokemonTableView.indexPathForSelectedRow?.row ?? 0]
             if let destinationVC = segue.destination as? PokemonDetailsViewController {
+                destinationVC.modalPresentationStyle = .fullScreen
                 destinationVC.pokemon = pokemon
             }
 //            let destinationVC = segue.destination as! PokemonDetailsViewController
