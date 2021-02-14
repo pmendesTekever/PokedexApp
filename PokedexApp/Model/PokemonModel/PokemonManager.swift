@@ -8,6 +8,13 @@ protocol PokemonManagerDelegate {
 struct PokemonManager {
     let pokemonURL = Constants.pokemonURL
     var delegate: PokemonManagerDelegate?
+
+    func fetchPokemon(pokemonList: Array<ResultsData>) {
+        for pokemons in pokemonList {
+            performRequest(urlString: pokemons.url)
+            sleep(UInt32(1.2))
+        }
+    }
     
     func fetchPokemon(pokemonName: String) {
         let urlString = "\(pokemonURL)\(pokemonName)"
