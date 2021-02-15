@@ -44,13 +44,18 @@ extension PokedexViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonCell
             if (indexPath.row <= pokemonListArray.count - 1) {
                 DispatchQueue.main.async {
+                    guard
+                        let pokemon = self.pokemonListArray[indexPath.row] as? PokemonModel
+                    else {
+                        return
+                    }
                     let imageData = try? Data(contentsOf: URL(string: self.pokemonListArray[indexPath.row].artwork)!)
                     cell.pokemonCellImage.image = UIImage(data: imageData!)
-                    cell.pokemonCellName.text = self.pokemonListArray[indexPath.row].name
-                    cell.pokemonCellNumber.text = "#\(self.pokemonListArray[indexPath.row].id)"
-                    cell.pokemonCellTypeOne.setTitle(self.pokemonListArray[indexPath.row].types[0], for: .normal)
-                    if self.pokemonListArray[indexPath.row].types.count > 1 {
-                        cell.pokemonCellTypeTwo.setTitle(self.pokemonListArray[indexPath.row].types[1], for: .normal)
+                    cell.pokemonCellName.text = pokemon.name
+                    cell.pokemonCellNumber.text = "#\(pokemon.id)"
+                    cell.pokemonCellTypeOne.setTitle(pokemon.types[0], for: .normal)
+                    if pokemon.types.count > 1 {
+                        cell.pokemonCellTypeTwo.setTitle(pokemon.types[1], for: .normal)
                     } else {
                         cell.pokemonCellTypeTwo.alpha = 0
                     }
