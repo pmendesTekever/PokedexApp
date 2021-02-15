@@ -69,22 +69,30 @@ class PokemonDetailsViewController: UIViewController {
     }
     
     func setPokemonAttacks() {
-        if let firstAttack = pokemon?.moves[0], firstAttack != "" {
-          pokemonFirstAttack.text = firstAttack.capitalized
-        } else {
-          pokemonFirstAttack.text = "Struggle"
-        }
-        if let secondAttack = pokemon?.moves[1], secondAttack != "" {
-          pokemonSecondAttack.text = secondAttack.capitalized
-        } else {
-            pokemonSecondAttack.isHidden = true
-        }
-        if let thirdAttack = pokemon?.moves[2], thirdAttack != "" {
-          pokemonFirstAttack.text = thirdAttack.capitalized
-        } else {
-            pokemonThirdAttack.isHidden = true
+        if pokemon?.moves != nil {
+            let movesCount = pokemon!.moves.count
+            switch movesCount {
+            case 1:
+                pokemonFirstAttack.text = pokemon?.moves[0].capitalized
+                pokemonSecondAttack.isHidden = true
+                pokemonThirdAttack.isHidden = true
+                break
+            case 2:
+                pokemonFirstAttack.text = pokemon?.moves[0].capitalized
+                pokemonSecondAttack.text = pokemon?.moves[1].capitalized
+                pokemonThirdAttack.isHidden = true
+                break
+            case 3:
+                pokemonFirstAttack.text = pokemon?.moves[0].capitalized
+                pokemonSecondAttack.text = pokemon?.moves[1].capitalized
+                pokemonThirdAttack.text = pokemon?.moves[2].capitalized
+                break
+            default:
+                pokemonFirstAttack.text = "Struggle"
+            }
         }
     }
+    
     
     func setPokemonBaseStats() {
         if let baseHP = pokemon?.baseHP {

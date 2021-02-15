@@ -64,16 +64,18 @@ struct PokemonManager {
 
             let availableMoves: Array = decodedData.moves
             var movesList = [String]()
-            for moves in availableMoves {
-                movesList.append(moves.move.name)
-            }
+            movesList.append(contentsOf: availableMoves.map( {$0.move.name}))
             
             var randomMoves = [String]()
-            while randomMoves.count < Constants.randomMovesCount {
-                let randomMovePosition = Int.random(in: 0..<movesList.count)
-                if !randomMoves.contains(movesList[randomMovePosition]) {
-                    randomMoves.append(movesList[randomMovePosition])
+            if movesList.count > 0 {
+                while randomMoves.count < Constants.randomMovesCount {
+                    let randomMovePosition = Int.random(in: 0..<movesList.count)
+                    if !randomMoves.contains(movesList[randomMovePosition]) {
+                        randomMoves.append(movesList[randomMovePosition])
+                    }
                 }
+            } else {
+                randomMoves.append("Struggle")
             }
             
             let stats = decodedData.stats
