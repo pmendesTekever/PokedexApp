@@ -8,7 +8,7 @@ protocol PokemonManagerDelegate {
 struct PokemonManager {
     let pokemonURL = Constants.pokemonURL
     var delegate: PokemonManagerDelegate?
-
+    
     func fetchPokemon(pokemonList: Array<ResultsData>) {
         for pokemons in pokemonList {
             performRequest(urlString: pokemons.url)
@@ -34,7 +34,7 @@ struct PokemonManager {
                     delegate?.didFailWithError(error: error!)
                     return
                 }
-
+                
                 if let safeData = data {
                     if let pokemon = self.parseJSON(safeData) {
                         delegate?.didUpdatePokemon(self, pokemon: pokemon)
@@ -86,31 +86,35 @@ struct PokemonManager {
                 switch stat.stat.name {
                 case statsStrings.hp.rawValue:
                     baseHP = stat.baseStat
+                    totalCP += baseHP
                 case statsStrings.attack.rawValue:
                     baseAttack = stat.baseStat
+                    totalCP += baseAttack
                 case statsStrings.defense.rawValue:
                     baseDefense = stat.baseStat
+                    totalCP += baseDefense
                 case statsStrings.specialAttack.rawValue:
                     baseSpAttack = stat.baseStat
+                    totalCP += baseSpAttack
                 case statsStrings.specialDefense.rawValue:
                     baseSpDefense = stat.baseStat
+                    totalCP += baseSpDefense
                 case statsStrings.speed.rawValue:
                     baseSpeed = stat.baseStat
+                    totalCP += baseSpeed
                 default:
                     print("Unknown Stat")
                 }
             }
-            
-            totalCP = baseHP + baseAttack + baseDefense + baseSpAttack + baseSpDefense + baseSpeed
             
             let pokemonTypes = decodedData.types
             var types = [String]()
             for type in pokemonTypes {
                 types.append(type.type.name)
             }
-        
+            
             let pokemon = PokemonModel(id: id, name: name, height: height, weight: weight, artwork: frontDefault, moves: randomMoves, baseHP: baseHP, baseAttack: baseAttack, baseDefense: baseDefense, baseSpAttack: baseSpAttack, baseSpDefense: baseSpDefense, baseSpeed: baseSpeed, totalCP: totalCP, types: types)
-
+            
             return pokemon
         } catch {
             delegate?.didFailWithError(error: error)
