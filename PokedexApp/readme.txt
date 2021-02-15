@@ -7,5 +7,6 @@ Displays a list of all the Pokémons available on the API (with lazy loading).
 Selecting a pokémon will take you to the pokémon details view.
 
 Setup
+Most up-to-date branch: Develop
 No special setup required, just download and run the project on Xcode.
 No external dependecies were used.
