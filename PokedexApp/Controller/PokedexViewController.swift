@@ -50,8 +50,9 @@ extension PokedexViewController: UITableViewDataSource {
                     else {
                         return
                     }
-                    let imageData = try? Data(contentsOf: URL(string: pokemon.artwork)!)
-                    cell.pokemonCellImage.image = UIImage(data: imageData!)
+                    if pokemon.artwork != nil {
+                        cell.pokemonCellImage.image = UIImage(data: (pokemon.artwork)!)
+                    }
                     cell.pokemonCellName.text = pokemon.name
                     cell.pokemonCellNumber.text = "#\(pokemon.id)"
                     cell.pokemonCellTypeOne.setTitle(pokemon.types[0], for: .normal)
@@ -93,7 +94,7 @@ extension PokedexViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
         pokemonListArray.append(pokemon)
         sortedPokemonListArray = pokemonListArray.sorted(by: {$0.id < $1.id})
-
+        
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
         }

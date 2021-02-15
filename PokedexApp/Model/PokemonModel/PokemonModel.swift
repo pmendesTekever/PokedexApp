@@ -5,7 +5,7 @@ struct PokemonModel {
     let name: String
     let height: Int
     let weight: Int
-    let artwork: String
+    let artwork: Data?
     let moves: [String]
     let baseHP: Int
     let baseAttack: Int

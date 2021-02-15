@@ -12,7 +12,6 @@ struct PokemonManager {
     func fetchPokemon(pokemonList: Array<ResultsData>) {
         for pokemons in pokemonList {
             performRequest(urlString: pokemons.url)
-            //sleep(UInt32(1.2))
         }
     }
     
@@ -58,7 +57,11 @@ struct PokemonManager {
             let otherSprites = sprites.other
             let artwork = otherSprites.artwork
             let frontDefault = artwork.frontDefault
-            
+            var pokemonImage: Data? = nil
+            if let image = try? Data(contentsOf: URL(string: frontDefault)!) {
+                pokemonImage = image
+            }
+
             let availableMoves: Array = decodedData.moves
             var movesList = [String]()
             for moves in availableMoves {
@@ -113,7 +116,7 @@ struct PokemonManager {
                 types.append(type.type.name)
             }
             
-            let pokemon = PokemonModel(id: id, name: name, height: height, weight: weight, artwork: frontDefault, moves: randomMoves, baseHP: baseHP, baseAttack: baseAttack, baseDefense: baseDefense, baseSpAttack: baseSpAttack, baseSpDefense: baseSpDefense, baseSpeed: baseSpeed, totalCP: totalCP, types: types)
+            let pokemon = PokemonModel(id: id, name: name, height: height, weight: weight, artwork: pokemonImage, moves: randomMoves, baseHP: baseHP, baseAttack: baseAttack, baseDefense: baseDefense, baseSpAttack: baseSpAttack, baseSpDefense: baseSpDefense, baseSpeed: baseSpeed, totalCP: totalCP, types: types)
             
             return pokemon
         } catch {

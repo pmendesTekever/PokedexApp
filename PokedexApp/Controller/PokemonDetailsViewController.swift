@@ -49,8 +49,9 @@ class PokemonDetailsViewController: UIViewController {
     }
     
     func setPokemonDetails() {
-        let imageData = try? Data(contentsOf: URL(string: pokemon?.artwork ?? "")!)
-        pokemonImage.image = UIImage(data: imageData!)
+        if pokemon?.artwork != nil {
+            pokemonImage.image = UIImage(data: (pokemon?.artwork)!)
+        }
         pokemonName.text = pokemon?.name.capitalized ?? "Pokémon"
         pokemonWeight.text = "\(pokemon?.weight ?? 0)Kg"
         pokemonHeight.text = "\(pokemon?.height ?? 0)"
