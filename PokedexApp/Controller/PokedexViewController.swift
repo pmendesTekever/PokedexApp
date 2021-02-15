@@ -7,6 +7,7 @@ class PokedexViewController: UIViewController {
     var pokedexManager = PokedexManager()
     var pokemonManager = PokemonManager()
     var pokemonListArray: Array<PokemonModel> = []
+    var sortedPokemonListArray: Array<PokemonModel> = []
     
     var pokemon: PokemonModel? = nil
     var artworkUrl: String?
@@ -25,7 +26,7 @@ class PokedexViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pokemonDetailsSegue" {
-            pokemon = pokemonListArray[pokemonTableView.indexPathForSelectedRow?.row ?? 0]
+            pokemon = sortedPokemonListArray[pokemonTableView.indexPathForSelectedRow?.row ?? 0]
             if let destinationVC = segue.destination as? PokemonDetailsViewController {
                 destinationVC.modalPresentationStyle = .fullScreen
                 destinationVC.pokemon = pokemon
@@ -37,19 +38,19 @@ class PokedexViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension PokedexViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemonListArray.count
+        return sortedPokemonListArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonCell
-            if (indexPath.row <= pokemonListArray.count - 1) {
+            if (indexPath.row <= sortedPokemonListArray.count - 1) {
                 DispatchQueue.main.async {
                     guard
-                        let pokemon = self.pokemonListArray[indexPath.row] as? PokemonModel
+                        let pokemon = self.sortedPokemonListArray[indexPath.row] as? PokemonModel
                     else {
                         return
                     }
-                    let imageData = try? Data(contentsOf: URL(string: self.pokemonListArray[indexPath.row].artwork)!)
+                    let imageData = try? Data(contentsOf: URL(string: pokemon.artwork)!)
                     cell.pokemonCellImage.image = UIImage(data: imageData!)
                     cell.pokemonCellName.text = pokemon.name
                     cell.pokemonCellNumber.text = "#\(pokemon.id)"
@@ -65,7 +66,7 @@ extension PokedexViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == pokemonListArray.count && pokemonListArray.count >= pokedexManager.pokedexOffset - 1 {
+        if indexPath.row + 1 == sortedPokemonListArray.count && sortedPokemonListArray.count >= pokedexManager.pokedexOffset - 1 {
             pokedexManager.fetchPokedex()
         }
     }
@@ -91,7 +92,8 @@ extension PokedexViewController: PokedexManagerDelegate {
 extension PokedexViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemon: PokemonModel) {
         pokemonListArray.append(pokemon)
-        
+        sortedPokemonListArray = pokemonListArray.sorted(by: {$0.id < $1.id})
+
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
         }

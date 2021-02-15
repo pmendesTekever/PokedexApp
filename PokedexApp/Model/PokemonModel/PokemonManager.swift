@@ -12,7 +12,7 @@ struct PokemonManager {
     func fetchPokemon(pokemonList: Array<ResultsData>) {
         for pokemons in pokemonList {
             performRequest(urlString: pokemons.url)
-            sleep(UInt32(1.2))
+            //sleep(UInt32(1.2))
         }
     }
     
