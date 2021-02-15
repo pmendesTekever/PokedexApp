@@ -12,7 +12,8 @@ class PokedexViewController: UIViewController {
     var pokemon: PokemonModel? = nil
     var artworkUrl: String?
     let activityIndicatorView = UIActivityIndicatorView(style: .medium)
-
+    private let typeTwoOpacity = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pokedexManager.delegate = self
@@ -58,8 +59,9 @@ extension PokedexViewController: UITableViewDataSource {
                     cell.pokemonCellTypeOne.setTitle(pokemon.types[0], for: .normal)
                     if pokemon.types.count > 1 {
                         cell.pokemonCellTypeTwo.setTitle(pokemon.types[1], for: .normal)
+                        cell.pokemonCellTypeTwo.alpha = 1
                     } else {
-                        cell.pokemonCellTypeTwo.alpha = 0
+                        cell.pokemonCellTypeTwo.alpha = CGFloat(self.typeTwoOpacity)
                     }
                 }
             }
@@ -67,7 +69,7 @@ extension PokedexViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == sortedPokemonListArray.count && sortedPokemonListArray.count >= pokedexManager.pokedexOffset - 1 {
+        if indexPath.row + 1 == sortedPokemonListArray.count{
             pokedexManager.fetchPokedex()
         }
     }
