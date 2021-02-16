@@ -10,8 +10,6 @@ class PokedexViewController: UIViewController {
     var sortedPokemonListArray: Array<PokemonModel> = []
     
     var pokemon: PokemonModel? = nil
-    var artworkUrl: String?
-    let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let typeTwoOpacity = 0
     
     override func viewDidLoad() {
