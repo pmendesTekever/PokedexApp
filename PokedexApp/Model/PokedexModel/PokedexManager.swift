@@ -25,7 +25,7 @@ struct PokedexManager {
                     delegate?.didFailWithError(error: error!)
                     return
                 }
-
+                
                 if let safeData = data {
                     if let pokedex = self.parseJSON(safeData) {
                         delegate?.didUpdatePokedex(self, pokedex: pokedex)
@@ -46,7 +46,7 @@ struct PokedexManager {
             let results: Array = decodedData.results
             
             let pokedex = PokedexModel(next: next, previous: previous, results: results)
-
+            
             return pokedex
         } catch {
             delegate?.didFailWithError(error: error)

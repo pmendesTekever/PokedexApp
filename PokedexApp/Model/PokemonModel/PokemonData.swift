@@ -48,7 +48,7 @@ struct Sprites: Codable {
 
 struct OtherDictionary: Codable {
     let artwork: OtherArt
-
+    
     enum CodingKeys: String, CodingKey {
         case artwork = "official-artwork"
     }
@@ -56,7 +56,7 @@ struct OtherDictionary: Codable {
 
 struct OtherArt: Codable {
     let frontDefault: String
-
+    
     enum CodingKeys: String, CodingKey {
         case  frontDefault = "front_default"
     }

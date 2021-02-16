@@ -7,5 +7,5 @@ class PokemonCell: UITableViewCell {
     @IBOutlet weak var pokemonCellNumber: UILabel!
     @IBOutlet weak var pokemonCellTypeTwo: UIButton!
     @IBOutlet weak var pokemonCellTypeOne: UIButton!
-
+    
 }
