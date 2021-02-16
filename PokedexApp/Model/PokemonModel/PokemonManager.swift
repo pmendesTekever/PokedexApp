@@ -49,7 +49,7 @@ struct PokemonManager {
         do {
             let decodedData = try decoder.decode(PokemonData.self, from: pokemonData)
             let id = decodedData.id
-            let name = decodedData.name
+            let name = decodedData.name.capitalized
             let height = decodedData.height
             let weight = decodedData.weight
             
