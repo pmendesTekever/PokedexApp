@@ -6,6 +6,7 @@
       "size" : "20x20"
     },
     {
+      "filename" : "pokemon-sun-and-moon-pokedex-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -16,6 +17,7 @@
       "size" : "29x29"
     },
     {
+      "filename" : "pokemon-sun-and-moon-pokedex-3.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
@@ -26,6 +28,7 @@
       "size" : "40x40"
     },
     {
+      "filename" : "pokemon-sun-and-moon-pokedex-2.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
@@ -76,6 +79,7 @@
       "size" : "76x76"
     },
     {
+      "filename" : "pokemon-sun-and-moon-pokedex.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
