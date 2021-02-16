@@ -80,7 +80,7 @@ class PokemonDetailsViewController: UIViewController {
         if pokemon?.artwork != nil {
             pokemonImage.image = UIImage(data: (pokemon?.artwork)!)
         }
-        pokemonName.text = pokemon?.name.capitalized ?? "Pokémon"
+        pokemonName.text = pokemon?.name ?? "Pokémon"
         pokemonWeight.text = "\(pokemon?.weight ?? 0)Kg"
         pokemonHeight.text = "\(pokemon?.height ?? 0)"
     }
