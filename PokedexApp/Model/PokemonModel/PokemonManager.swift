@@ -61,7 +61,7 @@ struct PokemonManager {
             if let image = try? Data(contentsOf: URL(string: frontDefault)!) {
                 pokemonImage = image
             }
-
+            
             let availableMoves: Array = decodedData.moves
             var movesList = [String]()
             movesList.append(contentsOf: availableMoves.map( {$0.move.name}))

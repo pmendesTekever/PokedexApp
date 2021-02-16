@@ -2,13 +2,16 @@ import UIKit
 
 class PokemonDetailsViewController: UIViewController {
     
-    var pokemon: PokemonModel? = nil
-    
-    @IBOutlet weak var CPLabel: UILabel!
-    @IBOutlet weak var pokemonImage: UIImageView!
+    @IBOutlet weak var topImageView: UIView!
+    @IBOutlet weak var fullDetailsStackView: UIStackView!
+    @IBOutlet weak var pokemonDetailStackView: UIStackView!
     @IBOutlet weak var detailsFirstSection: UIView!
     @IBOutlet weak var detailsSecondSection: UIView!
     @IBOutlet weak var detailsThirdSection: UIView!
+    @IBOutlet weak var buttonCPStackView: UIStackView!
+    
+    @IBOutlet weak var CPLabel: UILabel!
+    @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var pokemonWeight: UILabel!
     @IBOutlet weak var pokemonHeight: UILabel!
@@ -24,11 +27,12 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var spDefLabel: UILabel!
     @IBOutlet weak var speedLbl: UILabel!
     
-    @IBAction func bancBtnPressed(_ sender: Any) {
+    @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     private let detailCornerRadius: CGFloat =  10
+    var pokemon: PokemonModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +46,34 @@ class PokemonDetailsViewController: UIViewController {
         self.setPokemonBaseStats()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let margins = view.layoutMarginsGuide
+        if UIDevice.current.orientation.isLandscape {
+            pokemonDetailStackView.axis = .horizontal
+            fullDetailsStackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 10).isActive = true
+        } else {
+            pokemonDetailStackView.axis = .vertical
+        }
+    }
+    
     func setDetailCornerRadius() {
         detailsFirstSection.layer.cornerRadius = detailCornerRadius
+        detailsFirstSection.layer.shadowColor = UIColor.gray.cgColor
+        detailsFirstSection.layer.shadowOpacity = 1
+        detailsFirstSection.layer.shadowOffset = .zero
+        detailsFirstSection.layer.shadowRadius = 8
+
         detailsSecondSection.layer.cornerRadius = detailCornerRadius
+        detailsSecondSection.layer.shadowColor = UIColor.gray.cgColor
+        detailsSecondSection.layer.shadowOpacity = 1
+        detailsSecondSection.layer.shadowOffset = .zero
+        detailsSecondSection.layer.shadowRadius = 8
+        
         detailsThirdSection.layer.cornerRadius = detailCornerRadius
+        detailsThirdSection.layer.shadowColor = UIColor.gray.cgColor
+        detailsThirdSection.layer.shadowOpacity = 1
+        detailsThirdSection.layer.shadowOffset = .zero
+        detailsThirdSection.layer.shadowRadius = 8
     }
     
     func setPokemonDetails() {
@@ -92,7 +120,6 @@ class PokemonDetailsViewController: UIViewController {
             }
         }
     }
-    
     
     func setPokemonBaseStats() {
         if let baseHP = pokemon?.baseHP {

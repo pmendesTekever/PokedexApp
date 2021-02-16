@@ -4,7 +4,7 @@ This app was built using Switf 5 with MVC Architecture and uses https://pokeapi.
 
 Features
 Displays a list of all the Pokémons available on the API (with lazy loading).
-Selecting a pokémon will take you to the pokémon details view.
+Selecting a pokémon will take you to the pokémon details view where you check its weight, height, 3 random attacks (available to that pokémon) and base stats!
 
 Setup
 Most up-to-date branch: Develop

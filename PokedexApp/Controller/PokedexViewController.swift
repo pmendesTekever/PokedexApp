@@ -44,27 +44,27 @@ extension PokedexViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonCell
-            if (indexPath.row <= sortedPokemonListArray.count - 1) {
-                DispatchQueue.main.async {
-                    guard
-                        let pokemon = self.sortedPokemonListArray[indexPath.row] as? PokemonModel
-                    else {
-                        return
-                    }
-                    if pokemon.artwork != nil {
-                        cell.pokemonCellImage.image = UIImage(data: (pokemon.artwork)!)
-                    }
-                    cell.pokemonCellName.text = pokemon.name
-                    cell.pokemonCellNumber.text = "#\(pokemon.id)"
-                    cell.pokemonCellTypeOne.setTitle(pokemon.types[0], for: .normal)
-                    if pokemon.types.count > 1 {
-                        cell.pokemonCellTypeTwo.setTitle(pokemon.types[1], for: .normal)
-                        cell.pokemonCellTypeTwo.alpha = 1
-                    } else {
-                        cell.pokemonCellTypeTwo.alpha = CGFloat(self.typeTwoOpacity)
-                    }
+        if (indexPath.row <= sortedPokemonListArray.count - 1) {
+            DispatchQueue.main.async {
+                guard
+                    let pokemon = self.sortedPokemonListArray[indexPath.row] as? PokemonModel
+                else {
+                    return
+                }
+                if pokemon.artwork != nil {
+                    cell.pokemonCellImage.image = UIImage(data: (pokemon.artwork)!)
+                }
+                cell.pokemonCellName.text = pokemon.name
+                cell.pokemonCellNumber.text = "#\(pokemon.id)"
+                cell.pokemonCellTypeOne.setTitle(pokemon.types[0], for: .normal)
+                if pokemon.types.count > 1 {
+                    cell.pokemonCellTypeTwo.setTitle(pokemon.types[1], for: .normal)
+                    cell.pokemonCellTypeTwo.alpha = 1
+                } else {
+                    cell.pokemonCellTypeTwo.alpha = CGFloat(self.typeTwoOpacity)
                 }
             }
+        }
         return cell
     }
     
